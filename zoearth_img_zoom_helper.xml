@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="system" method="upgrade">
+    <name>plg_zoearth_img_zoom_helper</name>
+    <author>zoearthmoon@gmail.com</author>
+    <creationDate>2015-05-31</creationDate>
+    <copyright>Copyright (C) 2015 Open Source Matters. All rights reserved.</copyright>
+    <license>GNU3</license>
+    <authorEmail>zoearthmoon@gmail.com</authorEmail>
+    <authorUrl>www.zoearthmoon.net</authorUrl>
+    <version>1.0</version>
+    <description>
+    <![CDATA[
+    <div style="text-align:left">
+        <blockquote>
+        <p>您好!這是zoearth 的圖片幫忙上lightbox內容外掛<h1>Zoearth Img Zoom Helper</h1></p>
+        <small>主要功能為使用
+        <br>在指定頁面或指定參數中用javascript解析圖片大小加上指定的class或是div來達成提示lightbox可用性以及啟動lightbox事件
+        </small>
+        </blockquote>
+    </div>
+    ]]>
+    </description>
+    <files>
+        <filename plugin="zoearth_img_zoom_helper">zoearth_img_zoom_helper.php</filename>
+    </files>
+    <config>
+    </config>
+</extension>
