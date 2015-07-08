@@ -23,6 +23,14 @@
     <files>
         <filename plugin="zoearth_img_zoom_helper">zoearth_img_zoom_helper.php</filename>
     </files>
-    <config>
-    </config>
+	<config>
+        <fields name="params" >
+            <fieldset name="basic" >
+            
+                <field name="menuId" type="menuitem" default="" label="出現選單" />
+                <field name="viewVal" type="text" default="" label="view值" />
+				
+            </fieldset>
+        </fields>
+	</config>
 </extension>

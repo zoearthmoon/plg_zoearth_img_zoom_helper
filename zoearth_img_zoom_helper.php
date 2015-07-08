@@ -3,50 +3,40 @@ defined('_JEXEC') or die ;
 
 jimport('joomla.plugin.plugin');
 
-class plgSystemZoearth_Iframe_Responsive extends JPlugin
+class plgSystemZoearth_Img_Zoom_Helper extends JPlugin
 {
-    function onAfterRender()
+    function onAfterRoute()
     {
         $app = JFactory::getApplication();
-        if ($app->isSite())
+        if (!$app->isSite())
         {
-            $response = JResponse::getBody();
-            //有 https://www.youtube.com/watch?
-            if (strpos($response,'<iframe'))
-            {
-                //加上CSS
-                static $showed;
-                if (!$showed)
-                {
-                    $showed = TRUE;
-                    //載入JS CSS
-                    $addText = '
-                    <style type="text/css">
-                    .video-container {
-                        position: relative;
-                        padding-bottom: 56.25%;
-                        padding-top: 30px; height: 0; overflow: hidden;
-                    }
-                    @media all and (max-width: 1024px) {
-                        .video-container iframe,
-                        .video-container object,
-                        .video-container embed {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                        }
-                    }
-                    </style>';
-                    $response = str_replace('</head>',$addText.'</head>',$response);
-                    
-                    //修改 iframe
-                    $response = str_replace('<iframe','<div class="video-container"><iframe',$response);
-                    $response = str_replace('</iframe>','</iframe></div>',$response);
-                    JResponse::setBody($response);
-                }
-            }
+			return FALSE;
         }
+		
+		$menu = $app->getMenu();
+		if ($menu->getActive() != $this->params->get('menuId'))//限定某些menu
+		{
+			return FALSE;
+		}
+		$viewVal = $this->params->get('viewVal');//限定某些頁面
+		if ($viewVal != '' && JRequest::getVar('Itemid') != $viewVal)
+		{
+			return FALSE;
+		}
+		
+		//20150531 zoearth 載入JS
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
     }
 }
