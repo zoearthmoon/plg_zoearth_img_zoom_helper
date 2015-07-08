@@ -13,30 +13,24 @@ class plgSystemZoearth_Img_Zoom_Helper extends JPlugin
 			return FALSE;
         }
 		
-		$menu = $app->getMenu();
-		if ($menu->getActive() != $this->params->get('menuId'))//限定某些menu
+		$selector = $this->params->get('selector');//選擇器
+		if ($selector != '' )
 		{
-			return FALSE;
+			//20150708 zoearth 呼叫JS
+			
+JHtml::script(Juri::base() . 'templates/custom/js/sample.js', $mootools);
+
+
+$document = JFactory::getDocument();
+
+
+$document->addScriptDeclaration('
+    window.event("domready", function() {
+        alert("An inline JavaScript Declaration");
+    });
+');
+
+
 		}
-		$viewVal = $this->params->get('viewVal');//限定某些頁面
-		if ($viewVal != '' && JRequest::getVar('Itemid') != $viewVal)
-		{
-			return FALSE;
-		}
-		
-		//20150531 zoearth 載入JS
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
     }
 }

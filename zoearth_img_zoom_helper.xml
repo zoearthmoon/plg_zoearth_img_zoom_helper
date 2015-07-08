@@ -27,8 +27,7 @@
         <fields name="params" >
             <fieldset name="basic" >
             
-                <field name="menuId" type="menuitem" default="" label="出現選單" />
-                <field name="viewVal" type="text" default="" label="view值" />
+                <field name="selector" type="text" default="" label="目標選擇" />
 				
             </fieldset>
         </fields>
