@@ -3,24 +3,26 @@ defined('_JEXEC') or die ;
 
 jimport('joomla.plugin.plugin');
 
-class plgSystemZoearth_Img_Zoom_Helper extends JPlugin
+class plgZ2Zoearth_Img_Zoom_Helper extends JPlugin
 {
-    function onAfterRoute()
+    //20150319 zoearth 針對購物車選單
+    function onZ2ShowItemView($option=array())
     {
-        $app = JFactory::getApplication();
-        if (!$app->isSite())
-        {
-            return FALSE;
-        }
+        $item =& $option['item'];
         
-        $selector = $this->params->get('selector');//選擇器
-        if ($selector != '' )
-        {
-            //20150708 zoearth 呼叫JS
-            JHtml::script(Juri::base().'plugins/system/zoearth_img_zoom_helper/zoearth_img_zoom_helper.js');
-            $document = JFactory::getDocument();
-            $document->addScriptDeclaration('var imgZoomSelect = "'.$selector.'";');
-            $document->addStyleDeclaration('.lightboximg{cursor: pointer !important;}');
-        }
+        $tWidth = (int)$this->params->get('width');
+        //20151126 zoearth 分析圖片(取得大小，超過500寬加上)
+        $item->introtext = preg_replace_callback('/src="images\/([^"]{1,})"/',function($matches){
+            if (file_exists(JPATH_ROOT.DS.'images'.DS.$matches[1]))
+            {
+                list($width, $height) = getimagesize(JPATH_ROOT.DS.'images'.DS.$matches[1]);
+                if ($width >= $tWidth)
+                {
+                    return 'src="images/'.$matches[1].'" class="img-polaroid lightboximg" ';
+                }
+            }
+            return $matches[0];
+        },$item->introtext);
+        $item->introtext .= '<style type="text/css">.img-polaroid.lightboximg{cursor: pointer !important;}</style>';
     }
 }

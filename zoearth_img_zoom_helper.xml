@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="3.1" type="plugin" group="system" method="upgrade">
+<extension version="3.1" type="plugin" group="z2" method="upgrade">
     <name>plg_zoearth_img_zoom_helper</name>
     <author>zoearthmoon@gmail.com</author>
     <creationDate>2015-05-31</creationDate>
@@ -7,7 +7,7 @@
     <license>GNU3</license>
     <authorEmail>zoearthmoon@gmail.com</authorEmail>
     <authorUrl>www.zoearthmoon.net</authorUrl>
-    <version>1.1.2</version>
+    <version>1.2.1</version>
     <description>
     <![CDATA[
     <div style="text-align:left">
@@ -15,6 +15,7 @@
         <p>您好!這是zoearth 的圖片幫忙上lightbox內容外掛<h1>Zoearth Img Zoom Helper</h1></p>
         <small>主要功能為使用
         <br>在指定頁面或指定參數中用javascript解析圖片大小加上指定的class或是div來達成提示lightbox可用性以及啟動lightbox事件
+        <br>2015.11.26: [V1.2.1]改為Z2外掛
         </small>
         </blockquote>
     </div>
@@ -22,13 +23,12 @@
     </description>
     <files>
         <filename plugin="zoearth_img_zoom_helper">zoearth_img_zoom_helper.php</filename>
-        <filename>zoearth_img_zoom_helper.js</filename>
     </files>
 	<config>
         <fields name="params" >
             <fieldset name="basic" >
             
-                <field name="selector" type="text" default="" label="目標選擇" />
+                <field name="width" type="text" default="" label="寬度目標" />
 				
             </fieldset>
         </fields>
