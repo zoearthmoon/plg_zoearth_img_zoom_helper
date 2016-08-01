@@ -7,7 +7,7 @@
     <license>GNU3</license>
     <authorEmail>zoearthmoon@gmail.com</authorEmail>
     <authorUrl>www.zoearthmoon.net</authorUrl>
-    <version>1.2.3</version>
+    <version>1.2.4</version>
     <description>
     <![CDATA[
     <div style="text-align:left">
@@ -23,6 +23,7 @@
     </description>
     <files>
         <filename plugin="zoearth_img_zoom_helper">zoearth_img_zoom_helper.php</filename>
+        <filename>jquery.lazyload.min.js</filename>
     </files>
 	<config>
         <fields name="params" >
@@ -30,6 +31,11 @@
             
                 <field name="width" type="text" default="" label="寬度目標" />
 				
+                <field name="lazyload" type="list" default="0" label="LazyLoad" >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                
             </fieldset>
         </fields>
 	</config>

@@ -22,7 +22,7 @@ class plgZ2Zoearth_Img_Zoom_Helper extends JPlugin
                 {
                     //20160315 zoearth 修改為縮圖
                     $sImg = Z2HelperImage::_('images/'.$matches[1],500,800);
-                    return '<a href="images/'.$matches[1].'" rel="lightbox" ><img src="'.$sImg.'" class="img-polaroid" ></a>';
+                    return '<a href="images/'.$matches[1].'" rel="lightbox" ><img src="'.$sImg.'" class="img-polaroid z2lazyload" ></a>';
                 }
             }
             return $matches[0];
@@ -37,11 +37,24 @@ class plgZ2Zoearth_Img_Zoom_Helper extends JPlugin
                 {
                     //20160315 zoearth 修改為縮圖
                     $sImg = Z2HelperImage::_('images/'.$matches[1],500,800);
-                    return '<a href="images/'.$matches[1].'" rel="lightbox" ><img src="'.$sImg.'" class="img-polaroid" ></a>';
+                    return '<a href="images/'.$matches[1].'" rel="lightbox" ><img src="'.$sImg.'" class="img-polaroid z2lazyload" ></a>';
                 }
             }
             return $matches[0];
         },$item->introtext);
         $item->introtext .= '<style type="text/css">.img-polaroid.lightboximg{cursor: pointer !important;}</style>';
+        
+        //20160801 zoearth 新增lazyload
+        if ($this->params->get('lazyload') == '1' )
+        {
+            JHtml::script(JUri::root().'plugins/z2/zoearth_img_zoom_helper/jquery.lazyload.min.js');
+            $app = JFactory::getDocument();
+            $app->addScriptDeclaration('
+                jQuery(document).ready(function() {
+                    jQuery("img.z2lazyload").lazyload({effect : "fadeIn"});
+                });
+            ');
+        }
+        
     }
 }
